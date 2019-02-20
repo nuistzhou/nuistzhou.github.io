@@ -4,7 +4,7 @@ SEOTitle: 平的博客 | Ping World
 header-img: img/home-bg.jpg
 email: nuistzhou@gmail.com
 description: "GIS | RS | Spatial Thinking"
-keyword: "Ping Blog, 博客, 个人网站, 互联网, Web, GIS, RS"
+keyword: "Ping Blog, 博客, 个人网站, 互联网, Web, GIS, RS, Spatial Analysis, Python, IT"
 url: "https://pzhou.me"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -59,7 +59,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+disqus_username: nuistzhou
 
 # Netease settings
 netease_comment: false
@@ -71,8 +71,8 @@ netease_comment: false
 # ba_track_id: [your track id]
 
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
+ga_track_id: 'UA-134832811-1'            # Format: UA-xxxxxx-xx
+ga_domain: pzhou.me
 
 
 
@@ -100,40 +100,28 @@ page-mathjax: false
 
 
 
-# Friends
-friends: [
+# TAGS
+TAGS: [
     {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # },{
-        title: "乱序",
-        href: "http://mida.re/"
+        title: "GIS",
+        href: "https://en.wikipedia.org/wiki/Geographic_information_system"
     },{
-        title: "前端外刊评论",
-        href: "http://qianduan.guru/"
+        title: "Remote Sensing",
+        href: "https://en.wikipedia.org/wiki/Remote_sensing"
     },{
-        title: "天镶的博客",
-        href: "http://lingyu.wang/"
+        title: "Spatial Analysis",
+        href: "https://en.wikipedia.org/wiki/Spatial_analysis"
     },{
-        title: "Luke 的自留地",
-        href: "http://hmqk1995.github.io"
+        title: "Data Science",
+        href: "https://en.wikipedia.org/wiki/Data_science"
     },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
+        title: "Geo Visualization",
+        href: "https://en.wikipedia.org/wiki/Geovisualization"
     },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
+        title: "Python",
+        href: "https://en.wikipedia.org/wiki/Python_(programming_language)"
     },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
-    },{
-        title: "解旻的博客",
-        href: "http://xieminis.me/"
+        title: "Algorithms",
+        href: "https://en.wikipedia.org/wiki/Algorithm"
     }
 ]
