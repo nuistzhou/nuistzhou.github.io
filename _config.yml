@@ -101,7 +101,7 @@ page-mathjax: false
 
 
 # TAGS
-TAGS: [
+friends: [
     {
         title: "GIS",
         href: "https://en.wikipedia.org/wiki/Geographic_information_system"
