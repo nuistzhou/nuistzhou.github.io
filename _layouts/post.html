@@ -122,11 +122,10 @@ layout: default
 {% endif %}
 
 
-{% if site.disqus_username %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_shortname = "nuistzhou";
     var disqus_identifier = "{{page.id}}";
     var disqus_url = "{{site.url}}{{page.url}}";
 
@@ -137,7 +136,6 @@ layout: default
     })();
 </script>
 <!-- disqus 公共JS代码 end -->
-{% endif %}
 
 
 {% if site.anchorjs %}
