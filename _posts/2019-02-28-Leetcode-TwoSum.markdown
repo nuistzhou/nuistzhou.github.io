@@ -12,8 +12,6 @@ tags:
 ---
 
 
-# Two Sum
-
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -25,7 +23,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 
 
-## Approach 1
+# Approach 1
 ```python
 from typing import List
 class Solution():
@@ -43,7 +41,7 @@ print ("The sum of {0} element and {1} element is {2}".format(i, j, target))
 > **Runtime**: 9484 ms, faster than 5.01% of Python3 online submissions for Two Sum.
 > **Memory Usage**: 13.7 MB, less than 34.08% of Python3 online submissions for Two Sum.
 
-## Approach 2
+# Approach 2
 
 
 
