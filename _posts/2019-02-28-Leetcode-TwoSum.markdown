@@ -29,8 +29,8 @@ from typing import List
 class Solution():
     def twoSum(self, nums: 'list(int)', target: int) -> List[int]:
         for i in range(len(nums)):
-            for j in range(len(nums)):
-                if i != j and nums[i] + nums[j] == target:
+         	for j in range(i + 1, len(nums)):
+            	if nums[i] + nums[j] == target:
                     return [i, j]                
 solution = Solution()
 nums = [1,2,3,8,9]
@@ -42,6 +42,3 @@ print ("The sum of {0} element and {1} element is {2}".format(i, j, target))
 > **Memory Usage**: 13.7 MB, less than 34.08% of Python3 online submissions for Two Sum.
 
 # Approach 2
-
-
-
