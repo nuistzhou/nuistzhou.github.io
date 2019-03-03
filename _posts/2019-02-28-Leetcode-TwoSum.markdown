@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "LeetCode"
+title:      "LeetCode: Two Sum"
 subtitle:   " \"Algorithms\""
 date:       2019-02-28 20:00:00
 author:     "Ping"
