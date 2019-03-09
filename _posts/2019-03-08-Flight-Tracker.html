@@ -228,7 +228,7 @@ padding: 4px;
         }
         function addClouds(obj) {
             var spGeo = new THREE.SphereGeometry(RADIUS, 36, 36 );
-            var cloudsTexture = THREE.ImageUtils.loadTexture( "/img/in_post/flight_tracker/8081_earthhiresclouds4K.jpg" );
+            var cloudsTexture = THREE.ImageUtils.loadTexture( "/img/in-post/flight_tracker/8081_earthhiresclouds4K.jpg" );
             var materialClouds = new THREE.MeshLambertMaterial( { color: 0xffffff, map: cloudsTexture, transparent:true, opacity:0.4 } );
             meshClouds = new THREE.Mesh( spGeo, materialClouds );
             meshClouds.scale.set( 1.015, 1.015, 1.015 );
