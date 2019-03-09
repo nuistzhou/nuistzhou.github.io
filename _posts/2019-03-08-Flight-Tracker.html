@@ -196,10 +196,10 @@ padding: 4px;
             // var geometry = new THREE.CylinderGeometry( 1, 1, 0.05, 64 );
             var geometry = new THREE.SphereGeometry( RADIUS, 32, 32 );
             var material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load( '/img/in_post/flight_tracker/8081_earthmap4k.jpg')
-                ,bumpMap: new THREE.TextureLoader().load( '/img/in_post/flight_tracker/8081_earthbump4k.jpg')
+                map: new THREE.TextureLoader().load( '/img/in-post/flight_tracker/8081_earthmap4k.jpg')
+                ,bumpMap: new THREE.TextureLoader().load( '/img/in-post/flight_tracker/8081_earthbump4k.jpg')
                 ,bumpScale: 0.007
-                ,specularMap: new THREE.TextureLoader().load( '/img/in_post/flight_tracker/8081_earthspec4k.jpg')
+                ,specularMap: new THREE.TextureLoader().load( '/img/in-post/flight_tracker/8081_earthspec4k.jpg')
                 ,specular: new THREE.Color(0x0E0E0E)
             })
             obj.add( new THREE.Mesh( geometry, material ));
