@@ -85,12 +85,11 @@ padding: 4px;
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.1.3/fetch-jsonp.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="/js/in_post/flight_tracker/three.min.js"></script>
-    <script src="/js/in_post/flight_tracker/CustomOrbitControls.js"></script>
-    <script src="/js/in_post/flight_tracker/threex.domevents.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/CustomOrbitControls.js"></script>
+    <script src="./js/threex.domevents.js"></script>
 
     <script>
-        // code is the ICAO for each airport
         var airports = [
             {
                 name: 'New York City',
@@ -141,11 +140,6 @@ padding: 4px;
                 name: 'Sydney',
                 code: 'YSSY',
                 location: [-33.950228, 151.178772]
-            },
-            {
-                name: 'Amsterdam',
-                code: 'EHAM',
-                location: [52.3105, 4.7683]
             }
         ];
         var runAnim = true;
@@ -202,10 +196,10 @@ padding: 4px;
             // var geometry = new THREE.CylinderGeometry( 1, 1, 0.05, 64 );
             var geometry = new THREE.SphereGeometry( RADIUS, 32, 32 );
             var material = new THREE.MeshPhongMaterial({
-                map: new THREE.TextureLoader().load( '/img/in-post/flight_tracker/8081_earthmap4k.jpg')
-                ,bumpMap: new THREE.TextureLoader().load( '/img/in-post/flight_tracker/8081_earthbump4k.jpg')
+                map: new THREE.TextureLoader().load( './img/8081_earthmap4k.jpg')
+                ,bumpMap: new THREE.TextureLoader().load( './img/8081_earthbump4k.jpg')
                 ,bumpScale: 0.007
-                ,specularMap: new THREE.TextureLoader().load( '/img/in-post/flight_tracker/8081_earthspec4k.jpg')
+                ,specularMap: new THREE.TextureLoader().load( './img/8081_earthspec4k.jpg')
                 ,specular: new THREE.Color(0x0E0E0E)
             })
             obj.add( new THREE.Mesh( geometry, material ));
@@ -234,7 +228,7 @@ padding: 4px;
         }
         function addClouds(obj) {
             var spGeo = new THREE.SphereGeometry(RADIUS, 36, 36 );
-            var cloudsTexture = THREE.ImageUtils.loadTexture( "/img/in-post/flight_tracker/8081_earthhiresclouds4K.jpg" );
+            var cloudsTexture = THREE.ImageUtils.loadTexture( "./img/8081_earthhiresclouds4K.jpg" );
             var materialClouds = new THREE.MeshLambertMaterial( { color: 0xffffff, map: cloudsTexture, transparent:true, opacity:0.4 } );
             meshClouds = new THREE.Mesh( spGeo, materialClouds );
             meshClouds.scale.set( 1.015, 1.015, 1.015 );
@@ -383,8 +377,8 @@ padding: 4px;
         }
         function fetchPlanes() {
             console.log('fetching planes', airport);
-            var spaceID = 'l9F3RBfX';
-            var accessToken = 'AQAd6lqjXCQJrGMMkvbUItM';
+            var spaceID = '4M5Up51E';
+            var accessToken = 'Mhi4ENVVYUO9dwhKr-q1vg';
             var p = fetch('https://xyz.api.here.com/hub/spaces/' + spaceID + '/search?access_token=' + accessToken + '&tags=to-' + airport).then(function(response) {
                 return response.json()
             }).then(function(json) {
