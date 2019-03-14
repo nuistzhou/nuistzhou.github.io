@@ -383,7 +383,7 @@ padding: 4px;
         function fetchPlanes() {
             console.log('fetching planes', airport);
             var spaceID = '4M5Up51E';
-            var accessToken = 'Mhi4ENVVYUO9dwhKr-q1vg';
+            var accessToken = 'AYfvYAg1-yXTuoN0DB-fluw';
             var p = fetch('https://xyz.api.here.com/hub/spaces/' + spaceID + '/search?access_token=' + accessToken + '&tags=to-' + airport).then(function(response) {
                 return response.json()
             }).then(function(json) {
