@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "PYTHONPATH: solve custom module importing problem"
-subtitle:   " \"Insights\""
+subtitle:   " \"Note\""
 date:       2019-03-11 17:00:00
 author:     "Ping"
 header-img: "img/in-post/tutorial_pythonpath/post-head-python.jpg"

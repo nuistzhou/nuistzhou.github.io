@@ -1,11 +1,11 @@
 ---
 layout:     post
 title:      "Black: the magic Python code formatter"
-subtitle:   " \"Insights\""
+subtitle:   " \"Note\""
 date:       2019-03-15 16:00:00
 author:     "Ping"
 header-img: "img/in-post/tutorial_pythonpath/post-head-python.jpg"
-catalog: true
+catalog: false
 tags:
     - Technology
     - Python
