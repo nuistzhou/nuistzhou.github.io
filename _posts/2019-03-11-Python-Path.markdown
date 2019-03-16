@@ -52,7 +52,7 @@ If you want to permanently set your module into the environment variables,
 Then add the following line into the file, remember to change the *MODULE PATH* to yours, the curly brackets need to be 
 removed.
 
-`EXPORT PYTHONPATH="{ABSOLUTE PATH TO THE DIR CONTAINS YOUR MODULE}:$PYTHONPATH`
+`EXPORT PYTHONPATH="{ABSOLUTE PATH TO THE DIR CONTAINS YOUR MODULE}:$PYTHONPATH"`
 
 Then save and quit.
 
@@ -65,4 +65,4 @@ To make the change take effect immediately, run this command in the terminal:
 If you just want to set the environmentable variable temporarily to not mess up your `bash profile`, let say working 
 on this module just this time, then just run the following command in your terminal:
 
-`EXPORT PYTHONPATH="{ABSOLUTE PATH TO THE DIR CONTAINS YOUR MODULE}:$PYTHONPATH`
+`EXPORT PYTHONPATH="{ABSOLUTE PATH TO THE DIR CONTAINS YOUR MODULE}:$PYTHONPATH"`
