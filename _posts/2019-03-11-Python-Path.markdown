@@ -36,7 +36,9 @@ Now let's open a **NEW** CMD window and try same thing again:
 Succeed! Right?!
 
 **For Linux/Unix users**
+
 *******************
+
 If you want to permanently set your module into the environmental variables, 
 
 - Ubuntu, do:
