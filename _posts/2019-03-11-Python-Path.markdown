@@ -11,7 +11,7 @@ tags:
     - Python
 ---
 
-## Working with PYTHONPATH environmental variables
+## Working with PYTHONPATH environment variables
 
 I have been suffering from a situation where I was not able to import my python module from a custom path.
 
@@ -27,7 +27,7 @@ possible locations defined in the `sys.path` variable, if not found, an error is
 Thus, we just need to create an ENVIRONMENTAL VARIABLE named **"nagini"** and its **nagini's** absolute project path, 
 take Windows as an example:
 
-![environmental-variable](/img/in-post/tutorial_pythonpath/post_added_pythonpath.jpg)
+![environment-variable](/img/in-post/tutorial_pythonpath/post_added_pythonpath.jpg)
 
 Now let's open a **NEW** CMD window and try same thing again:
 
@@ -39,7 +39,7 @@ Succeed! Right?!
 
 *******************
 
-If you want to permanently set your module into the environmental variables, 
+If you want to permanently set your module into the environment variables, 
 
 - Ubuntu, do:
 
