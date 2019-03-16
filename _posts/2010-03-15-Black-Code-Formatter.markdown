@@ -17,7 +17,7 @@ If you have worked with Python, you might be bothered by the [PEP 8](https://www
 A good news is that one of my colleagues introduced a automation tool to smartly format your Python code and it can 
 also be integrated into various IDEs and ediotrs like PyCharm,Sublime, Emacs, Vim, Atom, just name a few. 
 
-Following is an very simple example showing how nicely the formatter can make your coding life easier!
+Following is a very simple example showing how nicely the formatter can make your coding life easier!
  
 **Before**
 ```python
