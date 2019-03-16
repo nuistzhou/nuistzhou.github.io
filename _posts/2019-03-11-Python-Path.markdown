@@ -5,7 +5,7 @@ subtitle:   " \"Insights\""
 date:       2019-03-11 17:00:00
 author:     "Ping"
 header-img: "img/in-post/tutorial_pythonpath/post-head-python.jpg"
-catalog: true
+catalog: false
 tags:
     - Technology
     - Python
