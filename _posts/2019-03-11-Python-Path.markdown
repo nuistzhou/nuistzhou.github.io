@@ -62,7 +62,7 @@ To make the change take effect immediately, run this command in the terminal:
 
 **Note:**
 
-If you just want to set the environmentable variable temporarily to not mass up your `bash profile`, let say working 
+If you just want to set the environmentable variable temporarily to not mess up your `bash profile`, let say working 
 on this module just this time, then just run the following command in your terminal:
 
 `EXPORT PYTHONPATH="{ABSOLUTE PATH TO THE DIR CONTAINS YOUR MODULE}:$PYTHONPATH`
