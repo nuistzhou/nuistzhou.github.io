@@ -11,4 +11,49 @@ tags:
     - AWS
 ---
 
-# 
+# Cloud Concepts
+
+
+
+
+# Cloud Best Practices
+
+
+
+
+# Design for Failures
+
+
+
+# Implement Elasticity: Automate Infrastructure
+
+
+
+
+# Decouple Components
+
+
+
+# Optimize For Performance
+
+
+
+# Security
+
+
+
+# optimize for Cost
+
+
+
+
+# Set Up a Web Application Architecture with Servers
+
+
+
+
+# Go Serverless
+
+
+
+
