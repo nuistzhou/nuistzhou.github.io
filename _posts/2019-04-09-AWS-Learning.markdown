@@ -91,7 +91,7 @@ Consists of:
 ## Search: AWS CloudSearch  
 A dedicated search engine to help improve user experience and maximize engagement.
 
-### Search Engines need to have features:
+Search Engines need to have features:
 * fast
 * reliable
 * best results based on relevancy to the query
@@ -100,8 +100,11 @@ A dedicated search engine to help improve user experience and maximize engagemen
 
 
 
-
 ## Serverless architectures: API gateway
+
+
+
+
 ## Serverless architectures: AWS Lambda
 
 
