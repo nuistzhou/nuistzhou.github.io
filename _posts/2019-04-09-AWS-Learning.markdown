@@ -101,6 +101,7 @@ Search Engines need to have features:
 
 
 ## Serverless architectures: API gateway
+![api_gateway](/img/in-post/aws_learning/api_gateway.jpg)
 
 
 
