@@ -101,19 +101,31 @@ Search Engines need to have features:
 
 
 ## Serverless architectures: API gateway
+Let the app uses the API gateway when API is required for an application.  
 ![api_gateway](/img/in-post/aws_learning/api_gateway.jpg)
 
-
+Additional features: 
+* Multiple versions and release stages
+* Automatic SDK generation 
+* monitoring and logging
 
 
 ## Serverless architectures: AWS Lambda
 
-
+Two components:
+* The lambda function itself (custom code uploaded to the server)
+* Event source 
+  - Other services of AWS
+  - Custom applications
+  
 
 
 # Security
+Shared security by both users and AWS together.
 
-
+* Iaas(Infrastructure as a Service): The user takes more responsibilities
+* Paas(Platform as a Service): AWS takes more responsibilities
+* Saas(Software as a service): The user takes the least responsibilities
 
 
 # optimize for Cost
