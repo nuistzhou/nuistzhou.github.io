@@ -144,6 +144,24 @@ Source (IP address or security group).
 This is an example:
 ![security_group](/img/in-post/aws_learning/security_group.jpg)
 
+## Virtual Private Cloud (VPC)
+
+Characteristics:
+* Logically isolated to only one AWS account
+* Not automatically addressable via the public internet
+* Private and public interface control
+* Both inbound and outbound traffic can be controlled
+* Multiple IP addresses can be assigned
+* Elastic interface networks can be assigned
+* VPN connection  
+...
+
+So it is complicated to configure a VPC. Good news is that AWS offers default VPC, with it:
+* No configuration steps 
+* Ready to use
+
+Example below:
+![vpc](/img/in-post/aws_learning/vpn.jpg)
 
 # optimize for Cost
 
