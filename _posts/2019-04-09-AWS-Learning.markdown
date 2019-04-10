@@ -88,8 +88,8 @@ Consists of:
 ![cloud_front](/img/in-post/aws_learning/cloud_front.jpg)
 
 
-## Search: AWS CloudSearch
-Store searchable data.
+## Search: AWS CloudSearch  
+A dedicated search engine to help improve user experience and maximize engagement.
 
 ### Search Engines need to have features:
 * fast
