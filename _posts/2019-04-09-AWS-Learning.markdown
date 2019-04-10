@@ -121,11 +121,28 @@ Two components:
 
 
 # Security
+## The shared security model
 Shared security by both users and AWS together.
 
 * Iaas(Infrastructure as a Service): The user takes more responsibilities
 * Paas(Platform as a Service): AWS takes more responsibilities
 * Saas(Software as a service): The user takes the least responsibilities
+
+## Identity and access management (IAM)
+Keep resources secure.
+
+Key points:
+* Never use master account to access resources or manage services.
+* Create separate users, groups, roles and permissions in IAM and only allow access when absolutely needed, and only
+to the specific resources that are needed.
+
+
+## AWS Security Group
+The virtual firewall of AWS. Rules are created to control the traffic via type (SSH, RDP, HTTPS) and Protocol (TCP, UDP), Port range, 
+Source (IP address or security group).
+
+This is an example:
+![security_group](/img/in-post/aws_learning/security_group.jpg)
 
 
 # optimize for Cost
