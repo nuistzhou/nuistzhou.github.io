@@ -85,7 +85,7 @@ Consists of:
 * A distribution 
 * Edge locations
 * Regional edge caches  
-[cloud_front](/img/in-post/aws_learning/cloud_front.jpg)
+![cloud_front](/img/in-post/aws_learning/cloud_front.jpg)
 
 
 ## Search: AWS CloudSearch
@@ -96,7 +96,7 @@ Store searchable data.
 * reliable
 * best results based on relevancy to the query
 
-[cloud_search](/img/in-post/aws_learning/cloud_search.jpg)
+![cloud_search](/img/in-post/aws_learning/cloud_search.jpg)
 
 
 
