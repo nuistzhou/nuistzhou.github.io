@@ -78,6 +78,15 @@ The way to choose which one depends on your use case (application). It is wiser 
 **So both ways can be used with the help of TTLs by keeping memory need minimized.**
 
 ## caching: AWS CloudFront
+A CDN service keep the data in cache to speed up delivery of web and mobile application content.  
+
+Consists of: 
+* A distribution 
+* Edge locations
+* Regional edge caches  
+[cloud_front](/img/in-post/aws_learning/cloud_front.jpg)
+
+
 ## Search: AWS CloudSearch
 ## Serverless architectures: API gateway
 ## Serverless architectures: AWS Lambda
