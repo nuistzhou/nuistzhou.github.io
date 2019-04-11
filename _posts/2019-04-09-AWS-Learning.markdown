@@ -29,8 +29,32 @@ tags:
 
 # Design for Failures
 
+* Virtual servers
+* EC2
+* Elastic IP: no instance specific/Acount level/Easily remapped from instance to instance
+***
+* Regions and availibility zones
+***
+Amazon machine image (**AMI**): packaged environment and settings
+* Template for root volume
+* Launch permissions
+* Block device mapping
 
+Templates are available in three ways: AMIs, AWS Marketplace and Community AMIs.
+***
+Elastic load balancing (**ELB**): balancing network traffic across multiple EC2 instances within multiple availability zones.
 
+Characteristics:
+* Supports HTTP, HTTPS, TCP traffic
+* Support health checks
+* Automatically scales based on demands placed on it
+* Singe CNAME for DNS configuration
+***
+Cloud monitoring: CloudWatch (Normally use for FREE)
+
+![cloud_watch](/img/in-post/aws_learning/cloud_watch.jpg)
+***
+Elastic Block Storage (EBS)
 
 
 # Implement Elasticity: Automate Infrastructure
@@ -164,9 +188,11 @@ Example below:
 ![vpc](/img/in-post/aws_learning/vpn.jpg)
 
 # optimize for Cost
-
-
-
+AWS provides four instance purchasing options:
+* On demand: hourly basis, no long-term commitment. **Pay when running.** -> 
+* Reserved: one-time but low payment, significant discount on hourly charge -> For committed utilization
+* Spot: bid on the market for unused capacity based on the supply and demand -> For time insensitive workloads
+* Dedicated hosting (_Not clear yet_)
 
 
 
