@@ -13,19 +13,6 @@ tags:
 
 > Most resources in this post are from [Lynda.com AWS Essential Training](https://www.lynda.com/Amazon-Web-Services-tutorials/Amazon-Web-Services-Essential-Training/569195-2.html).
 
-# Cloud Concepts
-
-
-
-
-
-
-# Cloud Best Practices
-
-
-
-
-
 
 # Design for Failures
 
@@ -48,13 +35,21 @@ Characteristics:
 * Supports HTTP, HTTPS, TCP traffic
 * Support health checks
 * Automatically scales based on demands placed on it
-* Singe CNAME for DNS configuration
+* Singe CNAME for DNS configuration   
 ***
 Cloud monitoring: CloudWatch (Normally use for FREE)
 
 ![cloud_watch](/img/in-post/aws_learning/cloud_watch.jpg)
-***
+***   
 Elastic Block Storage (EBS)
+
+EBS snapshot
+* Stored incrementally
+* Only billed for amount of data that changed
+* Deleting only removes what is not needed by other snapshots.
+
+***   
+Manage relational database service (RDS)
 
 
 # Implement Elasticity: Automate Infrastructure
