@@ -195,7 +195,10 @@ AWS provides four instance purchasing options:
 
 # Set Up a Web Application Architecture with Servers
 
-
+An example setting up a web server:
+1. S3: setting up the web hosting
+2. Lambda and the gateway API to manipulate data
+3. DynamoDB: storing data which can be used by the web application
 
 
 # Go Serverless
