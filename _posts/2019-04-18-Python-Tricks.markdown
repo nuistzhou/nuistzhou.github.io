@@ -28,3 +28,8 @@ d = {'a': 4, 'b': 1, 'c': 10, 'd': 2}
 sorted(d.items(), key=operator.itemgetter(1))
 #[('b', 1), ('d', 2), ('a', 4), ('c', 10)]
 ```
+
+## Enable Jupyter notebook code autocomplete ('Intellisense')
+
+Just add the line `%config IPCompleter.greedy=True` at the top of the nb file.  
+Then, you should be able to see available methods when pressing the **TAB**.
