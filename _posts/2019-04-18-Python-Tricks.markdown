@@ -17,8 +17,9 @@ Making use of the `sorted()` function, pass in a callable function/object to the
 ```python
 d = {'a': 4, 'b': 1, 'c': 10, 'd': 2}
 sorted(d.items(), key=lambda x:x[1])
-#[('b', 1), ('d', 2), ('a', 4), ('c', 10)]
 ```
+> [('b', 1), ('d', 2), ('a', 4), ('c', 10)]
+
 
 ### Using Operator specify the value (index 1)
 
@@ -26,8 +27,9 @@ sorted(d.items(), key=lambda x:x[1])
 import operator
 d = {'a': 4, 'b': 1, 'c': 10, 'd': 2}
 sorted(d.items(), key=operator.itemgetter(1))
-#[('b', 1), ('d', 2), ('a', 4), ('c', 10)]
 ```
+> [('b', 1), ('d', 2), ('a', 4), ('c', 10)]
+
 
 ## Enable Jupyter notebook code autocomplete ('Intellisense')
 
