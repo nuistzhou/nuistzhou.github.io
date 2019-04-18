@@ -11,16 +11,16 @@ tags:
 ---
 
 ## Sort a Python dictionary by value
+Making use of the `sorted()` function, pass in a callable function/object to the `key` parameter to make comparison.
 
-### First way
+### Using Lambda specify the value (index 1)
 ```python
 d = {'a': 4, 'b': 1, 'c': 10, 'd': 2}
 sorted(d.items(), key=lambda x:x[1])
 #[('b', 1), ('d', 2), ('a', 4), ('c', 10)]
-
 ```
 
-### Second way
+### Using Operator specify the value (index 1)
 
 ```python
 import operator
