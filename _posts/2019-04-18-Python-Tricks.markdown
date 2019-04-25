@@ -31,7 +31,20 @@ sorted(d.items(), key=operator.itemgetter(1))
 > [('b', 1), ('d', 2), ('a', 4), ('c', 10)]
 
 
-## Enable Jupyter notebook code autocomplete ('Intellisense')
+### Enable Jupyter notebook code autocomplete ('Intellisense')
 
 Just add the line `%config IPCompleter.greedy=True` at the top of the nb file.  
 Then, you should be able to see available methods when pressing the **TAB**.
+
+
+### Named Tuple
+The named tuple is from the _Collections_ module and it helps create a class easily.  
+But as the name suggests, it is also immutable, just like the _Tuple_.
+```python
+from collections import namedtuple
+
+CAR = namedtuple('CAR', 'name colour age star')
+car = CAR('bwm', 'red', 10, 'good')
+print ('The car\'s name is {}, its colour is {} and the star of recommendation is {}'.format(car.name, car.colour, car.star))
+```
+> The car's name is bwm, its colour is red and the star of recommendation is good
