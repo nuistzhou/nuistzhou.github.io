@@ -117,3 +117,19 @@ systemctl start shadowsocks-server
 ------------------------------------
 SUCCESS!
 :beach_umbrella:
+
+I also tested the shadowsocks on the Digital Ocean VPS, however, the google scholar was not able to be accessed 
+properly with the error info:   
+
+> We are sorry, but your computer or network may be sending automated queries, to protect our users, we 
+cannot process your request right now.
+
+After google, I noticed it has been an issue back from year 2014 since a lot of people are using DO's VPS doing 
+Web crawling and those IPV4 addresses from DO are blocked by Google...
+
+Some users came up with a solution by forcing the Shadowsocks using the IPV6 address, like in this [post](https://www
+.flyzy2005.com/tech/shadowsocks-google-scholar/).
+Unfortunately, I was not able to make it. More investigation needs to be done in the future...
+
+A friendly suggestion:    
+> Avoid using popular VPS suppliers like DO, Linode, .etc. could low the similar risk.
