@@ -25,12 +25,15 @@ Create the config file for the shadowsocks.
 Feel free to put the config file wherever you want, but recommend put it under the **/etc/**. 
 Here just put it in directory **/etc/shadowsocks_config/shadowsocks.json**, the file name doesn't matter, as long as 
 you know where to find it, because it will be used later as a parameter when run the *shadowsocks* command.   
-> sudo nano /etc/shadowsocks_config/shadowsocks.json  
+```bash
+sudo nano /etc/shadowsocks_config/shadowsocks.json  
+```
 
 This command will open the file if exists, otherwise it will be created.
 
 Next, copy and paste those commands into this **shadowsocks.json** file, see parameters documentation below.
-> {
+```json
+{
   "server":"my_server_ip", 
   "local_address": "127.0.0.1",
   "local_port":1080,
@@ -39,6 +42,8 @@ Next, copy and paste those commands into this **shadowsocks.json** file, see par
   "timeout":300,
   "method":"aes-256-cfb"
 }
+```
+
 
 Parameter | Explanations
 ----------|-------------
@@ -53,17 +58,26 @@ method  | use the default method *aes-256-cfb*
 ## Run the shadowsocks application
 
 Run in the foreground:
-> ssserver -c /etc/shadowsocks_config/shadowsocks.json
+```bash
+ssserver -c /etc/shadowsocks_config/shadowsocks.json
+```
 
-**OR** Run in the background (The recommend way):
+**OR** Run in the background (The recommend way):   
 To start:
->ssserver -c /etc/shadowsocks.json -d start
+```bash
+ssserver -c /etc/shadowsocks.json -d start
+```
 
 And to stop:
->ssserver -c /etc/shadowsocks.json -d stop
+```bash
+ssserver -c /etc/shadowsocks.json -d stop
+```
 
 To check if the application is running, simly using command:
-> pgrep ssserver
+```bash
+pgrep ssserver
+```
+
 
 If there is a process id returned, usually a number, then should be okay.
 
@@ -77,12 +91,14 @@ See next section.
 ## Config the application as a system service
 
 Create a *service* file under the path **/etc/systemd/system/**, let's name it *shadowsocks.service*
-> nano /etc/systemd/system/shadowsocks.service
+```bash
+nano /etc/systemd/system/shadowsocks.service
+```
 
 Then copy and paste the following lines into the file, remember to adapt the **ExecStart** parameter to your own 
 *shadowsocks.json* file path.
-
->[Unit]
+```editorconfig
+[Unit]
 Description=Shadowsocks Server
 After=network.target
 [Service]
@@ -90,11 +106,13 @@ ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks_config/shadowsocks.json
 Restart=always
 [Install]
 WantedBy=multi-user.target
-
+```
 Now, run the following commands to take effect and start the service:
 
-> systemctl enable shadowsocks-server
+```bash
+systemctl enable shadowsocks-server
 systemctl start shadowsocks-server
+```
 
 ------------------------------------
 SUCCESS!
