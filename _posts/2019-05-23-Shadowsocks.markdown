@@ -132,3 +132,7 @@ Unfortunately, I was not able to make it. More investigation needs to be done in
 
 A friendly suggestion:    
 > Avoid using popular VPS suppliers like DO, Linode, .etc. could low the similar risk.
+
+God bless!
+
+![pattern_recognition](/img/in-post/shadowsocks/pattern.jpg)
