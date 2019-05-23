@@ -44,16 +44,15 @@ Next, copy and paste those commands into this **shadowsocks.json** file, see par
 }
 ```
 
-
-Parameter | Explanations
+| Parameter | Explanations |
 ----------|-------------
-server | your VPS's IP address
-local_address | leave it as default
-local_port  |  leave it as default
-server_port |  put an available port as long as it is free, normally, 8388 is used
-password  | as name suggests, just give password as string
-timeout  | leave the default value 300 there
-method  | use the default method *aes-256-cfb*
+| server | your VPS's IP address |
+| local_address | leave it as default |
+| local_port  |  leave it as default |
+| server_port |  put an available port as long as it is free, normally, 8388 is used |
+| password  | as name suggests, just give password as string |
+| timeout  | leave the default value 300 there |
+| method  | use the default method *aes-256-cfb* |
 
 ## Run the shadowsocks application
 
