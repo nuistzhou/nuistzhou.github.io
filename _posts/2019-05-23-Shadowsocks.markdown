@@ -45,7 +45,7 @@ Next, copy and paste those commands into this **shadowsocks.json** file, see par
 ```
 
 | Parameter | Explanations |
-----------|-------------
+|----------|-------------|
 | server | your VPS's IP address |
 | local_address | leave it as default |
 | local_port  |  leave it as default |
