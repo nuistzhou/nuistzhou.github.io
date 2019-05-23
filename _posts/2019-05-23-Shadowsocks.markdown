@@ -13,8 +13,11 @@ Environment: Ubuntu
 
 ## Install dependencies
 
-> apt-get install python-pip
-> pip install shadowsocks
+```bash
+apt-get install python-pip
+pip install shadowsocks
+```
+
 
 ## Configuration
 
