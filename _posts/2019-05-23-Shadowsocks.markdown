@@ -132,7 +132,7 @@ Some users came up with a solution by forcing the Shadowsocks using the IPV6 add
 Unfortunately, I was not able to make it. More investigation needs to be done in the future...
 
 A friendly suggestion:    
-> Avoid using popular VPS suppliers like DO, Linode, .etc. could low the similar risk.
+> Avoid using popular VPS suppliers like DO, Linode, .etc. could lower the risk of IPs being blocked.
 
 God bless!
 
