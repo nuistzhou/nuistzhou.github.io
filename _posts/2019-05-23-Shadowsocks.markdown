@@ -106,11 +106,11 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
-Now, run the following commands to take effect and start the service:
+Now, run the following commands in the folder **/etc/systemd/system** to take effect and start the service:
 
 ```bash
-systemctl enable shadowsocks-server
-systemctl start shadowsocks-server
+systemctl enable shadowsocks.service
+systemctl start shadowsocks.service
 ```
 
 ------------------------------------
