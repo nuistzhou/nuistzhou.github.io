@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Book <Clean Code> Notes"
+title:      "Book 《Clean Code》 Notes"
 subtitle:   " \"\""
 date:       2019-06-30 21:00:00
 author:     "Ping"
