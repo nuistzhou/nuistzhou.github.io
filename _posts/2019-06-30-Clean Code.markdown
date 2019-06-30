@@ -10,7 +10,7 @@ tags:
     - Programming
 ---
 
-# Chapter: Functions
+# Chapter 3: Functions
 * Functions should DO ONE THING.
 * They should do it WELL.
 * They should do it ONLY.
