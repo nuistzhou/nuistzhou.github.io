@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>LODES Value Drivers</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%;}
+</style>
+</head>
+<body>
+<style>
+    #menu {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 10px;
+        border-radius: 3px;
+        width: 120px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    #menu a {
+        font-size: 13px;
+        color: #404040;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        text-align: center;
+    }
+
+    #menu a:last-child {
+        border: none;
+    }
+
+    #menu a:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    #menu a.active {
+        background-color: #3887be;
+        color: #ffffff;
+    }
+
+    #menu a.active:hover {
+        background: #3074a4;
+    }
+  #toggle {
+   position: absolute;
+   padding: 10px;
+   background: #dddddd;
+   font-family: Helvetica;
+  }
+
+  .toggle-map {
+  position: absolute;
+  border: 1px solid rgba(0,0,0,0.4);
+  font-family: Helvetica;
+  width: 200px;
+  height: 47px;
+  text-align: center;
+  margin-left: 550px;
+  top: 10px;
+  cursor: pointer;
+  }
+  .legend {
+background-color: #fff;
+border-radius: 3px;
+bottom: 30px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+right: 10px;
+z-index: 1;
+}
+ 
+.legend h4 {
+margin: 0 0 10px;
+}
+ 
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+</style>
+
+<nav id="menu"></nav>
+<div id="map"></div>
+<div class='toggle-map' id='toggle'>
+ <input id='home' type='radio' name='rtoggle' value='homw' checked='checked'>
+ <label for='home'>home</label>
+ <input id='work' type='radio' name='rtoggle' value='work'>
+ <label for='work'>work</label>
+ <input id='remain' type='radio' name='rtoggle' value='remain'>
+ <label for='remain'>remain</label>
+</div>
+
+<div id="popu-legend" class="legend">
+<h4>Population</h4>
+<div><span style="background-color: #d41a23"></span>70,070</div>
+<div><span style="background-color: #f03b20"></span>13,065</div>
+<div><span style="background-color: #f6612d"></span>6,277</div>
+<div><span style="background-color: #fd8d3c"></span>2,663</div>
+<div><span style="background-color: #feae4c"></span>1,246</div>
+<div><span style="background-color: #fecc5c"></span>632</div>
+<div><span style="background-color: #ffe585"></span>308</div>
+<div><span style="background-color: #ffffb2"></span>124</div>
+</div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoicHpob3UiLCJhIjoiY2syNGp0aTE2MHVpbzNkbXFlNGJvcG84MiJ9.8NTRE17OIz2fc9ZHPuvUdw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/pzhou/ck4bfxpxm0dod1cqms4sg99nh/draft',
+        zoom: 5,
+        center: [-98, 38.88]
+    });
+
+    map.on('load', function() {
+        map.addSource('home', {
+            type: 'vector',
+            url: 'mapbox://pzhou.6n1o3iwn'
+        });
+        map.addLayer({
+            'id': 'home',
+            'type': 'fill',
+            'source': 'home',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'fill-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 'S000'],
+                    124,
+                    '#ffffb2',
+                    308,
+                    '#ffe585',
+                    632,
+                    '#fecc5c',
+                    1246,
+                    '#feae4c',
+                    2663,
+                    '#fd8d3c',
+                    6277,
+                    '#f6612d',
+                    13065,
+                    '#f03b20',
+                    70070,
+                    '#d41a23'
+                    ],
+                'fill-opacity': 0.75
+            },
+            'source-layer': 'od_jt_2016_agg_home-b9o3tc'
+        });
+        map.addSource('work', {
+            type: 'vector',
+            url: 'mapbox://pzhou.d3cfj8j3'
+        });
+        map.addLayer({
+            'id': 'work',
+            'type': 'fill',
+            'source': 'work',
+            'layout': {
+                'visibility': 'none'
+            },
+            'paint': {
+                    'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'S000'],
+                        124,
+                        '#ffffb2',
+                        308,
+                        '#ffe585',
+                        632,
+                        '#fecc5c',
+                        1246,
+                        '#feae4c',
+                        2663,
+                        '#fd8d3c',
+                        6277,
+                        '#f6612d',
+                        13065,
+                        '#f03b20',
+                        70070,
+                        '#d41a23'
+                    ],
+                'fill-opacity': 0.75
+            },
+            'source-layer': 'od_jt_2016_agg_work-d6jofj'
+        });
+
+        map.addSource('remain', {
+            type: 'vector',
+            url: 'mapbox://pzhou.a1dxkbqd'
+        });
+        map.addLayer({
+            'id': 'remain',
+            'type': 'fill',
+            'source': 'remain',
+            'source-layer': 'remain',
+            'layout': {
+                'visibility': 'none'
+            },
+            'paint': {
+                    'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'S000'],
+                        124,
+                        '#ffffb2',
+                        308,
+                        '#ffe585',
+                        632,
+                        '#fecc5c',
+                        1246,
+                        '#feae4c',
+                        2663,
+                        '#fd8d3c',
+                        6277,
+                        '#f6612d',
+                        13065,
+                        '#f03b20',
+                        70070,
+                        '#d41a23'
+                    ],
+                    'fill-opacity': 0.75
+            },
+            'source-layer': 'od_jt_2016_agg_remain-355tbi'
+        });
+    });
+
+    var layerList = document.getElementById('toggle');
+    var inputs = layerList.getElementsByTagName('input');
+
+    function switchLayer(layer) {
+      var layer_id = layer.target.id;
+      for (var i = 0; i < inputs.length; i++) {
+        layerId = inputs[i].id;
+        map.setLayoutProperty(layerId, 'visibility', 'none'); 
+        };
+      map.setLayoutProperty(layer_id, 'visibility', 'visible');
+    };
+
+    for (var i = 0; i < inputs.length; i++) {
+      layerId = inputs[i].id;
+      inputs[i].onclick = switchLayer;
+    };
+</script>
+
+</body>
+</html>
