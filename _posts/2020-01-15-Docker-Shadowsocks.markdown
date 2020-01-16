@@ -15,7 +15,8 @@ Ubuntu 16.01 Minimal environment
 1. Install the latest docker version
 Steps [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
 
-2. Pull shadowsocks image and run
+2. Pull shadowsocks image and run  
+
 ```bash
 docker pull oddrationale/docker-shadowsocks
 
@@ -25,5 +26,6 @@ docker run --restart on-failure -d -p 2019:2019 oddrationale/docker-shadowsock
 # check if container is running
 docker ps -a
 ```
+
 3. Download the shadowsocks client to connect. (Mac OS, Windows, Linux, IOS and Android)
 Recommend **Wingy** on IOS and [ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG) on Mac OS.
