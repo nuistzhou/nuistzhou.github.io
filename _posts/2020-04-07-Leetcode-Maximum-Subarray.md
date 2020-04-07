@@ -23,6 +23,19 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 ## Analysis
 According to [Kadane's algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem), iterate the nums list, for each step _i_, computes the sum ending and including position _i_, stores into a temp variable like _maxEndingHere_, and evalulate if it will postively(+) contribute to next step's sum.
 
+The program trace should like this:  
+
+| i | num | maxEndingHere(i) | maxEndingHere(i-1) + num | maxOverall |
+|---|-----|------------------|--------------------------|------------|
+| 0 | -2 | -2 |  | -2 |
+| 1 | 1 | 1 | -1 | 1 |
+| 2 | -3 | -2 | -2 | -2 |
+| 3 | 4 | 4 | 2 | 4 |
+| 4 | -1 | 3 | 3 | 3 |
+| 5 | 2 | 5 | 5 | 5 |
+| 6 | 1 | 6 | 6 | 6 |
+| 7 | -5 | 1 | 1 | 1 |
+| 8 | 4 | 5 | 5 | 5 |
 
 ## Approach 1
 ```python
@@ -39,3 +52,7 @@ Memory Usage: 14.4 MB, less than 5.69% of Python3 online submissions for Maximum
 
 The result above looks okay, it has a time complexity of O(n) and space complexity of O(1).
 
+## Follow up
+
+Another solution would be using the divide and conquer approach, which is more subtle, could achieve time complexity of O(nLogn).  
+Might come back later for this improvement.
