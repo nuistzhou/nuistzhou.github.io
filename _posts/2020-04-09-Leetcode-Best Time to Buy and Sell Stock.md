@@ -44,9 +44,3 @@ class Solution:
         return maxProfit
 ```
 > **Runtime**: 60 ms
-
-
-## Follow up
-
-Another solution would be using the divide and conquer approach, which is more subtle, could achieve time complexity of O(nLogn).  
-Might come back later for this improvement.
