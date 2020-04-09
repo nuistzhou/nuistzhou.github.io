@@ -33,7 +33,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 
 ## Approach 1
-Easiest but brute force way, time complexity of O(n^2)
+Easiest logic but brute force way, time complexity of O(n^2)
 ```python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
@@ -43,4 +43,31 @@ class Solution:
                 maxProfit = max(prices[j] - prices[i], maxProfit)
         return maxProfit
 ```
-> **Runtime**: 60 ms
+> **Runtime**: Error: Time Limit Exceeded :x:   
+This is because various test cases have been performed on the codes, and this approach works for small scale list, but will cause time out error for large ones like in this case, it failed on a list with 220K members, which make sense of course, because it will loop the list for 220K * 220K times, which is 480M, dangerous, huh? 
+
+## Approach 2
+Better solution with time complexity of O(n)
+### Analysis
+
+Take list [7, 1, 5, 3, 6, 4]  as an example.  
+Iterating the list probably is a must for this question as far as I can see, but the problem is how to just find the highest selling and lowest buying in a turn in just one list iteration. Since selling has to be after the buying, it makes more sense to start iterating backwards. So, let's reverse the input list into [4, 6, 3, 5, 1, 7], and for each step, the price could be compared with the default highest selling price which is 0 by default, and replace it when positive, at the same time, compare the max profit (highest selling price - price) with the maxProfit so far. In the end, maxProfit should be result.
+
+```python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        pricesReversed = prices[::-1]
+        highestSelling = 0 # In case of empty list
+        maxProfit = 0 # Lowest profit should be 0 by default
+        for price in pricesReversed:
+            if price > highestSelling:
+                highestSelling = price
+            maxProfit = max(maxProfit, highestSelling - price)
+        return maxProfit
+```
+
+> Runtime: 64 ms, faster than 62.71% of Python3 online submissions for Best Time to Buy and Sell Stock.  
+Memory Usage: 15.3 MB, less than 5.75% of Python3 online submissions for Best Time to Buy and Sell Stock.   
+
+No error, everything works fine.
+
