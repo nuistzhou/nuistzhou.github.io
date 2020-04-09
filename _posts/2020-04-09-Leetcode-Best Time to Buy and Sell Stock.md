@@ -43,7 +43,7 @@ class Solution:
                 maxProfit = max(prices[j] - prices[i], maxProfit)
         return maxProfit
 ```
-> **Runtime**: Runtime: 60 ms
+> **Runtime**: 60 ms
 
 
 ## Follow up
