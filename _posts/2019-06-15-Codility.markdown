@@ -7,7 +7,7 @@ author:     "Ping"
 header-img: "img/in-post/tutorial_pythonpath/post-head-python.jpg"
 catalog: true
 tags:
-    - Algorithms
+    - Algorithm
     - Python
 ---
 
