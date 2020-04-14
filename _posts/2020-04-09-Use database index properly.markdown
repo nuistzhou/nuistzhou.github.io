@@ -11,7 +11,7 @@ tags:
     - Notebook
 ---
 
-> This is a notebook including what I have read and summarized from the website: [use-the-index-luke](https://use-the-index-luke.com/), all figures are from here as well. 
+> This is a notebook including what I have learned and summarized from the website: [use-the-index-luke](https://use-the-index-luke.com/), all figures are from here as well. 
 
 ## Chapter 1. Anatomy of an Index
 ### Leaf nodes
@@ -40,6 +40,7 @@ Put as many entries as possible in each node level makes the database handling m
 
 ## Chapter 2. The Where Clause
 
+### Primary Keys
 * An index is created automatically on the Primary Key.
 * When primary key is the only column used in WHERE clause, the clause cannot match multiple rows, then the DB doesn't need to follow the index leaf node. An negative example shown below, since the value 57 is not unique, the DB has to go further for each node to check and fetch the index: 
 
@@ -48,3 +49,15 @@ Put as many entries as possible in each node level makes the database handling m
 * The uniqueness of the primary key also guarantees that no more than one table access. 
 
 So, both of the Slow Indexes factors are not present for Where Clause == {Primary Key}.
+
+### Concatenated Indexes
+
+An index of multiple columns, also known as composite index, combined index.
+
+> The column order of the index does matter, it affects its usability, so has to be chosen carefully.
+
+__Issue__: when query only part of the composite index, a full table scan is performed instead of using the index, this can be verified by the execution plan. This means that with table size grows continuously, the query time can increase tremendously. 
+
+> A full table scan can be more appropriate when retrieving a large part of the table. This is because index lookup reads the data block by block, whereas the full table scan can read larger chunks at one time (multi-block read) and therefore need less fewer read operations.
+
+
