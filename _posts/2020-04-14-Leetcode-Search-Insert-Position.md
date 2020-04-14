@@ -60,7 +60,7 @@ class Solution:
 Runtime: 44 ms, faster than 91.67% of Python3 online submissions for Search Insert Position.   
 Memory Usage: 14.4 MB, less than 5.97% of Python3 online submissions for Search Insert Position.
 
-However, this solution doesn't handle a given empty list, here is a refined version and also more time efficient:
+However, this solution doesn't handle a given empty list, here is a refined version and also it is more time efficient:
 
 ```python
 class Solution:
@@ -78,3 +78,15 @@ class Solution:
 
 Runtime: 40 ms, faster than 98.06% of Python3 online submissions for Search Insert Position.
 Memory Usage: 14.6 MB, less than 5.97% of Python3 online submissions for Search Insert Position.
+
+## Approach 2
+Python also comes with the binary search functionality in module _bisect_.   
+The same logic with approach 1 is implemented under the hood, here is just a simple demo how this built-in function works.
+
+```python
+import bisect
+
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        bisect.bisect_left(nums, target)
+```
