@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Notebook: use databse index properly"
+title:      "Notebook: use database index properly"
 subtitle:   " \"\""
 date:       2020-04-09 16:00:00
 author:     "Ping"
@@ -11,19 +11,40 @@ tags:
     - Notebook
 ---
 
-> This is a notebook including what I have read and summarized from the website: [use-the-index-luke](https://use-the-index-luke.com/)
+> This is a notebook including what I have read and summarized from the website: [use-the-index-luke](https://use-the-index-luke.com/), all figures are from here as well. 
 
 ## Chapter 1. Anatomy of an Index
 ### Leaf nodes
 * Index entry: consists of indexed columns value and corresponding row ID, so it can quickly find the row in data table.  
 * Index entries are stored in a block (the smallest database storage unit) and logically linked together using [Doubly Linked Lists](https://en.wikipedia.org/wiki/Doubly_linked_list).     
 The hierarchy looks like this: Block(physical) -> Many Leaf Nodes -> Many Index Entries    
-Which means in order to find a index, you have to find the right block, then right leaf node, and finally the needed index. So the database needs a second structure to find the right index entry ----> Using the balanced tree: B-Tree
+Which means in order to find a index, you have to find the right block, then right leaf node, and finally the needed index. So the database needs a second structure to find the left node quickly ----> Using B-Tree
 
 ### B-Tree
 Here comes branch nodes layer, it is added on top of leaf nodes layer and stores the biggest indexed column value of a leaf node, and this grouping and generalization repeats until finally there is only one root node. 
 
 See below figure about the logical structure.
 
-![root-note_to_index-entry](/img/in-post/database_index/fig01_02_tree_structure.png)
+![root-note_to_index-entry](https://use-the-index-luke.com/static/fig01_02_tree_structure.en.BdEzalqw.png)
 
+This creates a balanced tree: B-Tree, which means the tree depth for each leaf node is the same.
+
+Put as many entries as possible in each node level makes the database handling millions of index entries within just 4 or 5 tree depth.
+
+### Slow Indexes
+
+* Factor 1: leaf node chain. When there are multiple entries matched when searching the index, the DB must read further next leaf node to see if there are more matching entries. So not only Tree Traversal, but also Leaf Node Chain. But this only applies to non-unique column.
+
+* Factor 2: Access the table. A single leaf node might need many db hits, and those hits might scattered across many table blocks, so IO bottleneck comes.
+
+
+## Chapter 2. The Where Clause
+
+* An index is created automatically on the Primary Key.
+* When primary key is the only column used in WHERE clause, the clause cannot match multiple rows, then the DB doesn't need to follow the index leaf node. An negative example shown below, since the value 57 is not unique, the DB has to go further for each node to check and fetch the index: 
+
+![follow-leaf_node_chain](https://use-the-index-luke.com/static/fig01_03_tree_traversal.en.niC7Q5jq.png)
+
+* The uniqueness of the primary key also guarantees that no more than one table access. 
+
+So, both of the Slow Indexes factors are not present for Where Clause == {Primary Key}.
