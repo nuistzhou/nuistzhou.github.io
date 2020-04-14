@@ -31,7 +31,7 @@ This creates a balanced tree: B-Tree, which means the tree depth for each leaf n
 
 Put as many entries as possible in each node level makes the database handling millions of index entries within just 4 or 5 tree depth.
 
-### Slow Indexes
+### Slow Indexes - Part I
 
 * Factor 1: leaf node chain. When there are multiple entries matched when searching the index, the DB must read further next leaf node to see if there are more matching entries. So not only Tree Traversal, but also Leaf Node Chain. But this only applies to non-unique column.
 
@@ -63,3 +63,5 @@ __Issue__: when query only part of the composite index, a full table scan is per
 The most important consideration when defining a composite index is how to choose the column ORDER so it can be used as often as possible.
 
 Of course it is possible to create multiple indexes with each for one column or multiple columns that we need to query, but single-index solution is till preferred for two reasons: 1) save storage space 2) overhead maintenance for the second index. 3) fewer indexes, better insert, delete and update performance.
+
+### Slow Index - Part II
