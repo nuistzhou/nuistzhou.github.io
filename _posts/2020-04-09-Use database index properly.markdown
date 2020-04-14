@@ -60,4 +60,6 @@ __Issue__: when query only part of the composite index, a full table scan is per
 
 > A full table scan can be more appropriate when retrieving a large part of the table. This is because index lookup reads the data block by block, whereas the full table scan can read larger chunks at one time (multi-block read) and therefore need less fewer read operations.
 
+The most important consideration when defining a composite index is how to choose the column ORDER so it can be used as often as possible.
 
+Of course it is possible to create multiple indexes with each for one column or multiple columns that we need to query, but single-index solution is till preferred for two reasons: 1) save storage space 2) overhead maintenance for the second index. 3) fewer indexes, better insert, delete and update performance.
