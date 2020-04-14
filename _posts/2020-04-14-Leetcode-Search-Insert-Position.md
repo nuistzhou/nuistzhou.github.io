@@ -65,14 +65,15 @@ However, this solution doesn't handle a given empty list, here is a refined vers
 ```python
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        low, high = 0, len(nums)
-        while low < high:
-            mid = (low + high) // 2
+        left = 0
+        right = len(nums)
+        while left < right:
+            mid = (left + right) // 2
             if target > nums[mid]:
-                low = mid + 1
+                left = mid + 1
             else:
-                high = mid
-        return low
+                right = mid
+        return left
 ```
 
 Runtime: 40 ms, faster than 98.06% of Python3 online submissions for Search Insert Position.
