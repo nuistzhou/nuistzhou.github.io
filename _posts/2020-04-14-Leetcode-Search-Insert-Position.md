@@ -60,5 +60,20 @@ class Solution:
 Runtime: 44 ms, faster than 91.67% of Python3 online submissions for Search Insert Position.   
 Memory Usage: 14.4 MB, less than 5.97% of Python3 online submissions for Search Insert Position.
 
-However, this solution doesn't handle a given empty list.
+However, this solution doesn't handle a given empty list, here is a refined version and also more time efficient:
 
+```python
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        low, high = 0, len(nums)
+        while low < high:
+            mid = (low + high) // 2
+            if target > nums[mid]:
+                low = mid + 1
+            else:
+                high = mid
+        return low
+```
+
+Runtime: 40 ms, faster than 98.06% of Python3 online submissions for Search Insert Position.
+Memory Usage: 14.6 MB, less than 5.97% of Python3 online submissions for Search Insert Position.
