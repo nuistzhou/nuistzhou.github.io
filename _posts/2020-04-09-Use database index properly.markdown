@@ -40,7 +40,8 @@ Put as many entries as possible in each node level makes the database handling m
 
 ## Chapter 2. The Where Clause
 
-### Primary Keys
+### The Equality Operator
+#### Primary Keys
 * An index is created automatically on the Primary Key.
 * When primary key is the only column used in WHERE clause, the clause cannot match multiple rows, then the DB doesn't need to follow the index leaf node. An negative example shown below, since the value 57 is not unique, the DB has to go further for each node to check and fetch the index: 
 
@@ -50,7 +51,7 @@ Put as many entries as possible in each node level makes the database handling m
 
 So, both of the Slow Indexes factors are not present for Where Clause == {Primary Key}.
 
-### Concatenated Indexes
+#### Concatenated Indexes
 
 An index of multiple columns, also known as composite index, combined index.
 
@@ -64,4 +65,20 @@ The most important consideration when defining a composite index is how to choos
 
 Of course it is possible to create multiple indexes with each for one column or multiple columns that we need to query, but single-index solution is till preferred for two reasons: 1) save storage space 2) overhead maintenance for the second index. 3) fewer indexes, better insert, delete and update performance.
 
-### Slow Index - Part II
+#### Slow Index - Part II
+
+The __Query Optimizer__ is part of the db system and is used to transform the SQL statement into an execution plan. There are two types of optimizer: 1) Cost-based optimizer, it is based on the operations in use and the estimated row numbers, and finally the cost value serves as the benchmark for pick the "best" execution plan. 2) Rule-based optimizer, the execution plan is generated using a set of hard-coded rules, which means it is less flexible and barely used today.
+
+Choosing the best execution plan based on the table's data distribution, so it is better to keep the database content's statistics up-to-date.
+
+## Chapter 3. Functions
+
+### Case-Insensitive Search Using UPPER or LOWER
+
+> PostgresSQL fully supports the __Indexes on Expressions__: meaning the index can not only on columns of the table, but also a function or scala expression computed from columns of the table, sees an example below:
+
+```sql
+CREATE INDEX test1_lower_col1_idx ON test1 (lower(col1));
+
+SELECT * FROM test1 WHERE lower(col1) = 'value';
+```
