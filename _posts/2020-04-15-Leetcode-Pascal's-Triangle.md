@@ -34,7 +34,8 @@ Output:
 
 ## Approach 1
 ```python
-def generate(numRows):
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:    
     pascal = [[1] * (i + 1) for i in range(numRows)]
     for i in range(numRows):
         for j in range(1, i):
@@ -51,9 +52,21 @@ Not fast enough though.  😿
 
 ## Approach 2
 
-Instead of initializing a default array at the beginning, 
+Instead of initializing a default array at the beginning, this solution creates arrays row by row.
 
 ```python
-
-
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        rowArray = [1]
+        array = []
+        for i in range(numRows):
+            array.append(rowArray)
+            rowArray = [1] + [rowArray[j] + rowArray[j + 1] for j in range(len(rowArray) - 1)] + [1]
+        return array
 ```
+
+>Runtime: 24 ms, faster than 89.07% of Python3 online submissions for Pascal's Triangle.  
+Memory Usage: 14 MB, less than 7.14% of Python3 online submissions for Pascal's Triangle.
+
+A great time performance improvement. 😸   
+Time complexity is O(nˆ2)
