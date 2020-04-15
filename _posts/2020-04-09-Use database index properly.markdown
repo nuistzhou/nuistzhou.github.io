@@ -69,11 +69,23 @@ Of course it is possible to create multiple indexes with each for one column or 
 
 The __Query Optimizer__ is part of the db system and is used to transform the SQL statement into an execution plan. There are two types of optimizer: 1) Cost-based optimizer, it is based on the operations in use and the estimated row numbers, and finally the cost value serves as the benchmark for pick the "best" execution plan. 2) Rule-based optimizer, the execution plan is generated using a set of hard-coded rules, which means it is less flexible and barely used today.
 
-Choosing the best execution plan based on the table's data distribution, so it is better to keep the database content's statistics up-to-date.
+Choosing the best execution plan based on the table's data distribution, so it is better to keep the database content's statistics up-to-date, so update the statistics after every index change.
 
-## Chapter 3. Functions
+### Functions
 
-### Case-Insensitive Search Using UPPER or LOWER
+#### Case-Insensitive Search Using UPPER or LOWER
+
+```sql
+SELECT first_name, last_name, phone_number
+  FROM employees
+ WHERE UPPER(last_name) = UPPER('winand')
+```
+From above query, you might expect it to use the Index on `last_name` column, whereas it is not the case from the execution plan that a Full Table Scan is performed. The reason is that the db system sees the function as a black box here and would not use the Index as a consequence. The solution is to crate a `Function Based Index (FBI)` as shown below:
+
+```sql
+CREATE INDEX emp_up_name 
+    ON employees (UPPER(last_name))
+```
 
 > PostgresSQL fully supports the __Indexes on Expressions__: meaning the index can not only on columns of the table, but also a function or scala expression computed from columns of the table, sees an example below:
 
@@ -82,3 +94,7 @@ CREATE INDEX test1_lower_col1_idx ON test1 (lower(col1));
 
 SELECT * FROM test1 WHERE lower(col1) = 'value';
 ```
+
+> SQL Server and MySQL however don't support function-based indexes, the workaround here is compute the columns and then they can be indexed afterwards.
+
+#### User-defined Functions
