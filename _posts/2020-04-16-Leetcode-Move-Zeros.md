@@ -67,4 +67,7 @@ class Solution:
 >Runtime: 52 ms, faster than 52.77% of Python3 online submissions for Move Zeroes.  
 Memory Usage: 15 MB, less than 5.97% of Python3 online submissions for Move Zeroes.
 
-Time efficiency improved a lot, because we omitted the `if element in nums` check in line 9.
+Time efficiency improved a lot, because we omitted the `if element in nums` check in line 9, but the overall logic keeps the same.
+
+
+
