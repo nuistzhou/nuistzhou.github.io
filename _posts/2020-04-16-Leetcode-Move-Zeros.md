@@ -36,7 +36,6 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         i = 0
-        raw_len = len(nums)
         while True:
             if 0 in nums:
                 nums.remove(0)
@@ -49,3 +48,23 @@ Keep removing and counting all 0 from list, then add those number of 0 back to t
 
 > Runtime: 188 ms, faster than 17.12% of Python3 online submissions for Move Zeroes.  
 Memory Usage: 14.9 MB, less than 5.97% of Python3 online submissions for Move Zeroes.
+
+
+## Approach 2
+```python
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        counter = 0
+        for i in range(len(nums)):
+            if nums[i-counter] == 0:
+                nums.pop(i-counter)
+                counter += 1
+        nums += [0] * counter
+````
+>Runtime: 52 ms, faster than 52.77% of Python3 online submissions for Move Zeroes.  
+Memory Usage: 15 MB, less than 5.97% of Python3 online submissions for Move Zeroes.
+
+Time efficiency improved a lot, because we omitted the `if element in nums` check in line 9.
