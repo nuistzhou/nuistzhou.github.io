@@ -29,3 +29,23 @@ Note:
 
 
 ## Approach 1
+```python
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        i = 0
+        raw_len = len(nums)
+        while True:
+            if 0 in nums:
+                nums.remove(0)
+                i += 1
+            else:
+                break
+        nums += [0] * i
+````
+Keep removing and counting all 0 from list, then add those number of 0 back to the list. The simplest logic, but not efficient, because it has to check if there is 0 left in the array every time, and this check has time complexity of O(N) and method remove has the same complexity.
+
+> Runtime: 188 ms, faster than 17.12% of Python3 online submissions for Move Zeroes.  
+Memory Usage: 14.9 MB, less than 5.97% of Python3 online submissions for Move Zeroes.
