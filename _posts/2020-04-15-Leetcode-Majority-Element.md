@@ -13,60 +13,68 @@ tags:
 ---
 
 ## Description
-Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
 
-![demo](https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif)
+You may assume that the array is non-empty and the majority element always exist in the array.
 
-In Pascal's triangle, each number is the sum of the two numbers directly above it.
-
+Example 1: 
 ```
-Input: 5
-Output:
-[
-     [1],
-    [1,1],
-   [1,2,1],
-  [1,3,3,1],
- [1,4,6,4,1]
-]
+Input: [3,2,3]
+Output: 3
+```
+
+Example 2:
+```
+Input: [2,2,1,1,1,2,2]
+Output: 2
 ```
 
 
 ## Approach 1
 ```python
+import collections
+
 class Solution:
-    def generate(self, numRows: int) -> List[List[int]]:    
-    pascal = [[1] * (i + 1) for i in range(numRows)]
-    for i in range(numRows):
-        for j in range(1, i):
-            pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
-    return pascal
+    def majorityElement(self, nums: List[int]) -> int:
+        c = collections.Counter(nums)
+        return c.most_common(1)[0][0]
 ```
-This is the most elegant approach so far as I can think of.  
-It constructs a array filled with default value 1, then iterate row by row, column by column, to calculate the every element value except the most left/right ones according to the Pascal formula.
+By taking advantage of `Collections` module, we could solve this problem with just 2 lines of codes, well, it is kind of cheating for a test, but works perfectly in a real project.
 
-> Runtime: 32 ms, faster than 28.66% of Python3 online submissions for Pascal's Triangle.
-Memory Usage: 13.8 MB, less than 7.14% of Python3 online submissions for Pascal's Triangle.
+> Runtime: 168 ms, faster than 91.15% of Python3 online submissions for Majority Element.  
+Memory Usage: 15.2 MB, less than 7.14% of Python3 online submissions for Majority Element
 
-Not fast enough though.  😿 
 
 ## Approach 2
 
-Instead of initializing a default array at the beginning, this solution creates arrays row by row.
+```python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        d = dict()
+        l = len(nums)
+        for num in nums:
+            if num not in d.keys():
+                d[num] = 1
+            elif d[num] >= l//2:
+                return num
+            else:
+                d[num] += 1
+        return nums[0]
+```
+This solution follows the simplest logic of counting occurrences for each unique element, until any of them reach half number of the array length. 
+
+> Runtime: 188 ms, faster than 29.21% of Python3 online submissions for Majority Element.  
+Memory Usage: 15.2 MB, less than 7.14% of Python3 online submissions for Majority Element.
+
+## Approach 3
 
 ```python
 class Solution:
-    def generate(self, numRows: int) -> List[List[int]]:
-        rowArray = [1]
-        array = []
-        for i in range(numRows):
-            array.append(rowArray)
-            rowArray = [1] + [rowArray[j] + rowArray[j + 1] for j in range(len(rowArray) - 1)] + [1]
-        return array
-```
+    def majorityElement(self, nums: List[int]) -> int:
+        nums = sorted(nums, reverse=True)
+        return nums[len(nums//2)]
+````
 
->Runtime: 24 ms, faster than 89.07% of Python3 online submissions for Pascal's Triangle.  
-Memory Usage: 14 MB, less than 7.14% of Python3 online submissions for Pascal's Triangle.
 
-A great time performance improvement. 😸   
-Time complexity is O(nˆ2)
+>Runtime: 164 ms, faster than 96.25% of Python3 online submissions for Majority Element.  
+Memory Usage: 15.3 MB, less than 7.14% of Python3 online submissions for Majority Element.
