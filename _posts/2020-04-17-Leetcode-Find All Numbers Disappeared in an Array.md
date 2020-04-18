@@ -35,12 +35,10 @@ Output:
 ```python
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        a = set(range(1,len(nums)+1))
-        return a.difference(set(nums))
+        return set(range(1,len(nums)+1)).difference(set(nums))
 ````
 
 > Runtime: 352 ms, faster than 95.31% of Python3 online submissions for Find All Numbers Disappeared in an Array.  
 Memory Usage: 25.3 MB, less than 7.14% of Python3 online submissions for Find All Numbers Disappeared in an Array.
 
-By taking advantage of Python set data structure, it is the easiest solution and Python set difference built-in function has time complexity of O(len(a))
-
+By taking advantage of Python set data structure, it is the easiest solution and Python set difference built-in function has time complexity of O(len(a)). 
