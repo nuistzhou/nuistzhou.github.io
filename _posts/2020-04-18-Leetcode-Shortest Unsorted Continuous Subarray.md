@@ -35,5 +35,25 @@ Note:
 ```python
 class Solution:
     def findUnsortedSubarray(self, nums: List[int]) -> int:
-        
+        numsSorted = sorted(nums)
+        n = len(nums)
+        idx_start, idx_end = -1, -1
+        i = 0
+        while i < n:
+            if numsSorted[i] != nums[i]:
+                idx_start = i
+                break
+            i += 1
+        if idx_start == -1:
+            return 0
+        i = n - 1
+        while i >= 0:
+            if numsSorted[i] != nums[i]:
+                idx_end = i
+                break
+            i -= 1
+        return idx_end - idx_start + 1
 ````
+
+> Runtime: 340 ms, faster than 7.24% of Python3 online submissions for Shortest Unsorted Continuous Subarray.  
+Memory Usage: 15 MB, less than 5.00% of Python3 online submissions for Shortest Unsorted Continuous Subarray.
