@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "LeetCode: Find All Numbers Disappeared in an Array"
+title:      "Shortest Unsorted Continuous Subarray"
 subtitle:   " \"Algorithms\""
-date:       2020-04-17 10:00:00
+date:       2020-04-18 19:00:00
 author:     "Ping"
 header-img: "img/post-bg-leetcode.jpg"
 catalog: true
@@ -13,32 +13,27 @@ tags:
 ---
 
 ## Description
-Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.
 
-Find all the elements of [1, n] inclusive that do not appear in this array.
-
-Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+You need to find the shortest such subarray and output its length.
 
 Example:
 
 ```
-Input:
-[4,3,2,7,8,2,3,1]
-
-Output:
-[5,6]
+Input: [2, 6, 4, 8, 10, 9, 15]
+Output: 5
+Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
 ````
+
+Note:
+1. Then length of the input array is in range [1, 10,000].
+2. The input array may contain duplicates, so ascending order here means <=.
 
 
 ## Approach 1
 
 ```python
 class Solution:
-    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        return set(range(1,len(nums)+1)).difference(set(nums))
+    def findUnsortedSubarray(self, nums: List[int]) -> int:
+        
 ````
-
-> Runtime: 352 ms, faster than 95.31% of Python3 online submissions for Find All Numbers Disappeared in an Array.  
-Memory Usage: 25.3 MB, less than 7.14% of Python3 online submissions for Find All Numbers Disappeared in an Array.
-
-By taking advantage of Python set data structure, it is the easiest solution and Python set difference built-in function has time complexity of O(len(a)). 
