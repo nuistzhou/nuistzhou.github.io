@@ -46,7 +46,7 @@ class Solution:
 Result: ❌  
 Above codes has time complexity of O(nˆ2), work for short list, but failed for test case with 5000 elements, caused `Time limit exceeded` error.
 
-__Iteration 2__
+__Iteration 2__  
 In order to make it less time complex, we need to think about things below:
 1. Possible to just loop the array once, namely in O(n) time?
 2. Subsequently, how to make sure max area can be found without calculating area between every pair of lines in brute force way in iteration 1?
