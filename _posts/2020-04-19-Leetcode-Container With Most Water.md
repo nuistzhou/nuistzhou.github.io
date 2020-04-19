@@ -72,6 +72,7 @@ class Solution:
                 j -=1
         return area
 ```
+Result: ✅
 > Runtime: 124 ms, faster than 88.07% of Python3 online submissions for Container With Most Water.  
 Memory Usage: 15.5 MB, less than 5.26% of Python3 online submissions for Container With Most Water.
 
