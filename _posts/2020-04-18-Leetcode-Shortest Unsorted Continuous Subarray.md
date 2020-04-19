@@ -32,20 +32,19 @@ Note:
 
 ## Approach 1
 
+__Iteration 1__
 ```python
 class Solution:
     def findUnsortedSubarray(self, nums: List[int]) -> int:
         numsSorted = sorted(nums)
         n = len(nums)
-        idx_start, idx_end = -1, -1
+        idx_start, idx_end = 0, n - 1
         i = 0
         while i < n:
             if numsSorted[i] != nums[i]:
                 idx_start = i
                 break
             i += 1
-        if idx_start == -1:
-            return 0
         i = n - 1
         while i >= 0:
             if numsSorted[i] != nums[i]:
@@ -54,6 +53,34 @@ class Solution:
             i -= 1
         return idx_end - idx_start + 1
 ````
+Result: ❌  
+Above codes work well for all test cases provided by Leetcode except one boundary case: array `nums` is already sorted in ascending order, so let's put a check before the two loops to avoid this boundary case.
 
-> Runtime: 340 ms, faster than 7.24% of Python3 online submissions for Shortest Unsorted Continuous Subarray.  
-Memory Usage: 15 MB, less than 5.00% of Python3 online submissions for Shortest Unsorted Continuous Subarray.
+__Iteration 2__
+```python
+class Solution:
+    def findUnsortedSubarray(self, nums: List[int]) -> int:
+        numsSorted = sorted(nums)
+        n = len(nums)
+        idx_start, idx_end = 0, n - 1
+        i = 0
+        if numsSorted == nums:
+            return 0
+        while i < n:
+            if numsSorted[i] != nums[i]:
+                idx_start = i
+                break
+            i += 1
+        i = n - 1
+        while i >= 0:
+            if numsSorted[i] != nums[i]:
+                idx_end = i
+                break
+            i -= 1
+        return idx_end - idx_start + 1
+````
+Result: ✅
+> Runtime: 320 ms, faster than 7.71% of Python3 online submissions for Shortest Unsorted Continuous Subarray.
+Memory Usage: 15.2 MB, less than 5.00% of Python3 online submissions for Shortest Unsorted Continuous Subarray.
+
+It is worthy note that Leetcodes doesn't really give stable runtime valuations upon multiple submissions, with above codes, result ranges from 7% to 90+%. 
