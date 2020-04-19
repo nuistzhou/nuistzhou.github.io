@@ -55,7 +55,7 @@ Let's review the area calculation logic again:
 min(left_height, right_height) * (right_index - left_index)   
 So the area is always limited by the smaller height among two, and distance between two lines (width), which means, in order to increase the area, the lower height bound needs to be increased while distance between lines should be maximized.   
 
-An idea is to take two pointers, one from leftmost and the other one from the rightmost of the array, then moving pointers inwards, and for each step, only keep the highest line from both sides as the this is the potential way to increase the area, plus also because with moving pointer inwards, the width getting smaller, the area can only get smaller with the same height.
+An idea is to take two pointers, one from leftmost and the other one from the rightmost of the array, then moving pointers inwards, and for each step, only keep the higher line from both sides as the this is the potential way to increase the area, but calculate the area with the lower line, plus also because with moving pointer inwards, the width getting smaller, the area can only get smaller with the same height.
 
 ```python
 class Solution:
