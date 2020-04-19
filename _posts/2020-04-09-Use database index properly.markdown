@@ -98,3 +98,15 @@ SELECT * FROM test1 WHERE lower(col1) = 'value';
 > SQL Server and MySQL however don't support function-based indexes, the workaround here is compute the columns and then they can be indexed afterwards.
 
 #### User-defined Functions
+When the function result is not fully determined by the input parameters, it cannot be used for indexing, since index stores the value for later query, but those nondeterministic function result might got updated because of env. values for example:
+```sql
+CREATE FUNCTION get_age(date_of_birth DATE) 
+RETURN NUMBER
+AS
+BEGIN
+  RETURN 
+    TRUNC(MONTHS_BETWEEN(SYSDATE, date_of_birth)/12);
+END
+````
+`Age` get increment every year automatically, but if it is used for indexing, the index value is always a constant regardless of time flies.
+
