@@ -78,17 +78,17 @@ However, above solution gives an exception for test case:
 ```         
 [-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0]       
 ```
-with output: 
+with our output: 
 ```
 [[4,0,-4],[4,1,-5],[0,0,0],[3,1,-4],[-2,-2,4],[1,1,-2],[1,3,-4],[1,4,-5]]   
 ```
-and expected: 
+but expected: 
 ```
 [[-5,1,4],[-4,0,4],[-4,1,3],[-2,-2,4],[-2,1,1],[0,0,0]]
 ```
 Obviously, there were duplicated triplets.  
 Actually, I didn't expect this, because a `set(tuple())` should have solved this, but seems identical tuples means they need to be exact same, like:
-(1,2,3) is different from (3,2,1).  
+(-2, 1, 1) is different from (1, 1, -2).  
 
  We can easily solve this by sorting both `positive` and `negative` lists at the beginning, and each time when found a triplet, always add it into the triplets set in the order of `(positive, positive/negative), negative)`.     
 
