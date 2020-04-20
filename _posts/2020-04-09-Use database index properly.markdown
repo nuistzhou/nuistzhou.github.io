@@ -107,6 +107,16 @@ BEGIN
   RETURN 
     TRUNC(MONTHS_BETWEEN(SYSDATE, date_of_birth)/12);
 END
-````
+```
 `Age` get increment every year automatically, but if it is used for indexing, the index value is always a constant regardless of time flies.
 
+### Parameterized Queries
+Using bind parameters instead of values has following advantages:
+* Security: prevent SQL Injection.
+* Performance: Oracle and SQL Server could reuse the `execution plan` if parameters are used in the statement since using value means different statements for DB system.
+
+However, every coin comes with two sides:
+* Bind parameters disables the DB to select the best `execution plan`, for example based on the column data histogram, which therefore might decrease the performance. It is like a `variable` in programming, unknown to complier, only 'visible' in runtime. 
+
+🌹
+But overall, it is suggested to use bind parameters because in most cases, the actual values won't affect the execution plan.
