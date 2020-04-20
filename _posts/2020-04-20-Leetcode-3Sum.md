@@ -22,7 +22,13 @@ The solution set must not contain duplicate triplets.
 Example:
 
 ```
-Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
 ```
 
 
@@ -59,14 +65,14 @@ class Solution:
                     allTriplets.add((negative[i], negative[j], -(negative[i] + negative[j])))
         return allTriplets          
 ```
-Result: ❌
-The most intuitive solution would be separate the problem into four different cases:
+Result: ❌   
+This is the most intuitive solution which separates the problem into four different cases, and deal with them individually:
 * [0, 0, 0]
 * [positive, 0, negative] # positive + negative == 0
 * [positive1, positive2, negative] # positive1 + positive2 + negative == 0
 * [positive, negative1, negative2] # positive + negative1 + negative2 == 0
 
-With the time complexity of O(nˆ2).
+The time complexity is O(nˆ2).
 
 However, above solution gives an exception for test case:  
 ```         
@@ -85,7 +91,7 @@ Actually, I didn't expect this, because a `set(tuple())` should have solved this
 (1,2,3) is different from (3,2,1).  
 
  We can easily solve this by sorting both `positive` and `negative` lists at the beginning, and each time when found a triplet, always add it into the triplets set in the order of `(positive, positive/negative), negative)`.     
- 
+
  See an improved solution below:
 
 __Iteration 2__   
