@@ -120,3 +120,12 @@ However, every coin comes with two sides:
 
 🌹
 But overall, it is suggested to use bind parameters because in most cases, the actual values won't affect the execution plan.
+
+### Searching for Ranges
+
+* Index for equality first then for ranges
+* The most selective column should be at the leftmost index position
+* Index `LIKE` filters: only the part before the FIRST wild card severs as the access predicate, the remaining parts after the wild cards don't narrow scanned index range, meaning they are just used as filter predicate. So avoid LIKE expression like this: `'%TERM'`
+* Index merge: one index scan is faster than two indices' because the database then have to traverse two index trees, plus a lot of more memory and CPU time to combine the intermediate results.
+
+### Partial Indexes
