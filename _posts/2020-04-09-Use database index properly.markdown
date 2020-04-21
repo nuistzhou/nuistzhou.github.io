@@ -129,3 +129,21 @@ But overall, it is suggested to use bind parameters because in most cases, the a
 * Index merge: one index scan is faster than two indices' because the database then have to traverse two index trees, plus a lot of more memory and CPU time to combine the intermediate results.
 
 ### Partial Indexes
+
+A partial index is useful for `WHERE` clause where conditions use __constant__ values.    
+
+like for statement:
+```sql
+SELECT message
+  FROM messages
+ WHERE processed = 'N'
+   AND receiver  = ?
+```
+If we directly build a composite index on columns `processed` and `receiver`, its performance should be fine, but it actually also includes the `processed` rows which we don't need anymore. So, instead, we crete a index to discard processed rows and thus reducing disk space needed for building the index, both horizontally: removed column (`processed`), and vertically: fewer rows. As such:  
+```sql
+CREATE INDEX messages_todo
+          ON messages (receiver)
+       WHERE processed = 'N'
+```
+
+### Obfuscated Conditions
