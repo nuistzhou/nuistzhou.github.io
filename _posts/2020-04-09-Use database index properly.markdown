@@ -147,3 +147,11 @@ CREATE INDEX messages_todo
 ```
 
 ### Obfuscated Conditions
+
+* Date
+
+* Numeric Strings
+
+* Smart Logic
+
+* Math
