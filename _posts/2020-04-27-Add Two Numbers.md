@@ -73,7 +73,8 @@ For Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 
 3. For hundreds unit, `3 + 4 => 7`, AND, don't forget the `1` from last step, so should be `8`. Since it is less than 10 and therefore doesn't adding to higher place, we omit it as well like what we did before by doing dividing by 10.
 
-Finally, we got added numbers' linked list: `7 -> 0 -> 8`
+Finally, we got added numbers' linked list: `7 -> 0 -> 8`  
+
 __Iteration 2__
 
 ```python
