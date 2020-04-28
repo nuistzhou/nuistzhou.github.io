@@ -13,6 +13,60 @@ tags:
 
 > This is a notebook including what I have learned and summarized from the famous book \<SQL Antipatterns>.
 
+# Logical Database Design Antipatterns
+
+## Jaywalking
+
+Definition: In a `Many-To-Many` situation, where one record in table 1 relates to many records in table 2, and also vice versa.    
+For example:
+
+```sql
+CREATE TABLE Products (
+product_id SERIAL PRIMARY KEY,
+product_name VARCHAR(1000),
+account_id VARCHAR(100), -- comma-separated list -- . . .
+);
+INSERT INTO Products (product_id, product_name, account_id) VALUES (DEFAULT, 'Visual TurboBuilder', '12,34');
+```
+One product might have multiple account (`account_id`) related to it, storing them as a array of string/ints might come to mind first when programming because it is fairly intuitive, however, some underlying problems come later when querying, updating, inserting, etc. since you have to parse the string array into a list of account_ids by either using string split functions or Regx, which damage the sql performance and also the functions extension possibilities in the future.
+
+✅
+Creating a new `Intersection` table solves the problem neatly.
+
+```sql
+CREATE TABLE Contacts (
+        product_id  BIGINT UNSIGNED NOT NULL,
+        account_id  BIGINT UNSIGNED NOT NULL,
+        PRIMARY KEY (product_id, account_id),
+        FOREIGN KEY (product_id) REFERENCES Products(product_id),
+        FOREIGN KEY (account_id) REFERENCES Accounts(account_id)
+);
+      INSERT INTO Contacts (product_id, accont_id)
+      VALUES (123, 12), (123, 34), (345, 23), (567, 12), (567, 34);
+```
+
+## Native Trees
+
+Hierarchical data or treelike data, for example relationship of employees to managers.   
+
+Alternative solutions:
+
+### Path Enumeration
+![pic](/img/in-post/sql_antipatterns/path_enumeration.jpg)
+
+Drawbacks: data type VARCHAR has the length limit anyway, not ideal when tree depth is unknown(might unlimited). 
+
+### Nested Sets
+Complicated and not neat, ignore for now.
+
+### Closure Table
+
+![pic1](/img/in-post/sql_antipatterns/closure_table_1.jpg)
+
+![pic2](/img/in-post/sql_antipatterns/closure_table_2.jpg)
+
+THis way, the relationship is maintained in a separate table like what we did before for jaywalking. Even if the relations are deleted, the data it self still exists, for example in above case, the `comments` table.  
+
 # Query Antipatterns
 
 ## Fear of Unknown(NULL)
