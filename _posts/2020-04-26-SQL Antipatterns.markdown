@@ -67,6 +67,15 @@ Complicated and not neat, ignore for now.
 
 THis way, the relationship is maintained in a separate table like what we did before for jaywalking. Even if the relations are deleted, the data it self still exists, for example in above case, the `comments` table.  
 
+## ID Required
+
+* when Artificial value that has no meaning in the domain modelled by the table is used as primary key, it is called `pseudokey`.
+
+* Specify other domain related attribute as primary key or composite attributes as compound key when making more sense.
+
+* Pseudokey is not mandatory, it is a convention for a lot of developers, but you don't have to follow it when it doesn't help.
+
+
 # Query Antipatterns
 
 ## Fear of Unknown(NULL)
