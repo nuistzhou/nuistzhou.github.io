@@ -75,6 +75,23 @@ THis way, the relationship is maintained in a separate table like what we did be
 
 * Pseudokey is not mandatory, it is a convention for a lot of developers, but you don't have to follow it when it doesn't help.
 
+## Keyless Entry
+
+Using foreign keys instead of application code implementation to keep the `Referential Integrity`, avoiding the __Catch-22__ scenario.
+
+```sql
+CREATE TABLE Bugs (
+-- . . .
+reported_by BIGINT UNSIGNED NOT NULL,
+status VARCHAR(20) NOT NULL DEFAULT 'NEW', FOREIGN KEY (reported_by) REFERENCES Accounts(account_id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT, /*Restrict deletes in parent table: Account*/
+  FOREIGN KEY (status) REFERENCES BugStatus(status)
+    ON UPDATE CASCADE
+    ON DELETE SET DEFAULT /*Set status to default when records in BugStatus doesn't exist anymore.*/
+);
+```
+
 
 # Query Antipatterns
 
