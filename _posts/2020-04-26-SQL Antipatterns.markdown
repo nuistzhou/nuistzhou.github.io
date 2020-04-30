@@ -85,10 +85,10 @@ CREATE TABLE Bugs (
 reported_by BIGINT UNSIGNED NOT NULL,
 status VARCHAR(20) NOT NULL DEFAULT 'NEW', FOREIGN KEY (reported_by) REFERENCES Accounts(account_id)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT, /*Restrict deletes in parent table: Account*/
+    ON DELETE RESTRICT, /*You cannot delete the account if it is used in Bugs table.*/
   FOREIGN KEY (status) REFERENCES BugStatus(status)
     ON UPDATE CASCADE
-    ON DELETE SET DEFAULT /*Set status to default when records in BugStatus doesn't exist anymore.*/
+    ON DELETE SET DEFAULT /*Whenever a status value, any bugs with that status automatically reset to default.*/
 );
 ```
 
