@@ -109,7 +109,51 @@ INSERT INTO IssueAttributes (issue_id, attr_name, attr_value)
     (1234, 'priority', 'high');
 ```
 
-In this way, number of columns doesn't grow even with new attributes introduced in, and NULL value columns that entities with inapplicable attributes can be avoided. It shares something with NoSQL, like the key-value pair.  
+In this way, number of columns doesn't grow even with new attributes introduced in, and NULL value columns that entities with inapplicable attributes can be avoided. It shares something with NoSQL, like the key-value pair.
+
+Cons: 
+* sacrifices the data integrity that relational databases brings. Also makes query more complicated.
+* mandatory attributes not possible.
+* SQL data types unusable.
+
+A solution regarding to this EAV design is `Single Table Inheritance`, `Concrete Table Inheritance`, `Class Table Inheritance`, `Semi-structured Data`
+
+* Single Table Inheritance   
+
+A single table store all subtypes' columns together. Set attribute to NULL when it is not applicable for another subtype.  But you might encounter number of columns limit, and also no metadata per subtype, which makes difficult for other people to understand the table structures, might also for designer himself as well after a while.
+
+For example:   
+
+```sql
+CREATE TABLE Issues (
+  issue_id         SERIAL PRIMARY KEY,
+  reported_by      BIGINT UNSIGNED NOT NULL,
+  product_id       BIGINT UNSIGNED,
+  priority         VARCHAR(20),
+  version_resolved VARCHAR(20),
+  status           VARCHAR(20),
+  issue_type       VARCHAR(10),  -- BUG or FEATURE
+  severity         VARCHAR(20),  -- only for bugs
+  version_affected VARCHAR(20),  -- only for bugs
+  sponsor          VARCHAR(50),  -- only for feature requests
+  FOREIGN KEY (reported_by) REFERENCES Accounts(account_id)
+  FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+```
+
+* Concrete Table Inheritance 
+Separate table for each subtype. This is not new.
+
+
+* Class Table Inheritance
+
+A base table defines all common columns, and each subtype table contains type specific columns. Tables connected by a foreign key.   
+
+
+* Semi-structured Data
+
+A table store all common attributes, and a `BLOB` column store data in format such as XML or JSON which encodes both attribute names and values.   
+This design is helpful when you have to support new columns frequently. But fetching a specific attribute can be a pain.
 
 
 
