@@ -92,6 +92,26 @@ status VARCHAR(20) NOT NULL DEFAULT 'NEW', FOREIGN KEY (reported_by) REFERENCES 
 );
 ```
 
+## Entity Attribute Value (EAV)
+
+Each entity in the table is a `attribute-value` pair, for example:
+
+```sql
+INSERT INTO IssueAttributes (issue_id, attr_name, attr_value)
+  VALUES
+    (1234, 'product', '1' ),
+    (1234, 'date_reported', '2009-06-01' ),
+    (1234, 'status', 'NEW' ),
+    (1234, 'description', 'Saving does not work' ),
+    (1234, 'reported_by', 'Bill' ),
+    (1234, 'version_affected', '1.0'),
+    (1234, 'severity', 'loss of functionality' ),
+    (1234, 'priority', 'high');
+```
+
+In this way, number of columns doesn't grow even with new attributes introduced in, and NULL value columns that entities with inapplicable attributes can be avoided. It shares something with NoSQL, like the key-value pair.  
+
+
 
 # Query Antipatterns
 
