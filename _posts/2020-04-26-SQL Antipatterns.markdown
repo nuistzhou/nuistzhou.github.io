@@ -155,6 +155,7 @@ A base table defines all common columns, and each subtype table contains type sp
 A table store all common attributes, and a `BLOB` column store data in format such as XML or JSON which encodes both attribute names and values.   
 This design is helpful when you have to support new columns frequently. But fetching a specific attribute can be a pain.
 
+## Polymorphic Associations
 
 
 # Query Antipatterns
