@@ -65,7 +65,7 @@ class Solution:
             newHead.next = l2
         return temp
 ```
-> Beats 55% online submissions already.
+> Beats 70% online submissions already.
 
 
 __Approach 2__
