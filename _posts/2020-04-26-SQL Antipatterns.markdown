@@ -208,3 +208,23 @@ WHERE account_id = '123 OR TRUE'
 * Quoting Dynamic Values
 
 Parameterize dynamic values is the best solution for preventing SQL injection in most cases, however, this might leads to inefficient query since the database is liable to choose the wrong optimization plan, for example when a column values are not evenly distributed, say 90% of values are 1 and the other 10% are 0, using the index to query value 0 would be much more efficient whereas it is not the case for querying value 1 because a full table scan in this situation is faster. 
+
+An example of using quoting dynamic values:
+
+```php
+<?php
+$quoted_active = $pdo->quote($_REQUEST["active"]);
+$sql = "SELECT * FROM Accounts WHERE is_active = {$quoted_active}";
+$stmt = $pdo->query($sql);
+```
+
+* Isolate User Input from Code
+
+Build a mapping from user_input to sql_parameter_value will avoid unwanted inputs, also making default parameter values possible when user_input is not valid or desired.
+
+This also make any part of an SQL statement dynamic, including identifiers, SQL keywords, and even the entire expressions.
+
+From system design perspective, the internal details of the database are now decoupled from the user interface.
+
+
+
