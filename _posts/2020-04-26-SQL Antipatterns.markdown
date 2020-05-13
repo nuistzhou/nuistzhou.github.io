@@ -227,4 +227,11 @@ This also make any part of an SQL statement dynamic, including identifiers, SQL 
 From system design perspective, the internal details of the database are now decoupled from the user interface.
 
 
+Some golden guidelines for the SQL Injection inspection:
+
+1. Find SQL statements that are formed using application variables, string concatenation, or replacement.
+2. Trace the origin of all dynamic content used in the SQL statements.
+3. Assume any external contents is potentially hazardous. Trying to use filters, mappings, etc. to transform the untrusted content.
+4. Combing external data to SQL statements using query parameters as explained above.
+
 
