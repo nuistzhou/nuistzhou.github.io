@@ -176,3 +176,35 @@ Specify columns explicitly for example in SELECT and INSERT queries to avoid iss
 * New added columns won't affect our existing queries.
 * If column got dropped, the query raises an error explicitly display which codes need to be fixed.
 
+
+# Application Development Antipatterns
+
+
+## Readable Passwords
+* Using HASH function to encode plain passwords
+* Add `Salt` (a meaningless string) to user passwords then hash, which makes almost impossible for attackers to do trial and error attack because they lack knowledge about this specific `salt` and how it is concatenated to the real password string. The user-specific salt would adds more security to the system.
+
+## SQL Injection
+
+Using query parameters is a way to prevent SQL Injection, but it is not a universal solution unfortunately.
+Because parameter is always interpreted as a single literal value:
+
+* List of values cannot be a single parameter
+* Table identifier cannot be a parameter
+* Column identifier cannot be a parameter
+* SQL keyword cannot be a parameter:
+```sql
+SELECT * FROM Bugs ORDER BY date_reported 'DESC'
+```
+
+### Solutions
+
+* Filter the input and only pass valid values to SQL statement
+* Parameterize Dynamic Values, fails the following injection attempt.
+```sql
+UPDATE Accounts SET password_hash = SHA2('xyzzy')
+WHERE account_id = '123 OR TRUE'
+```
+* Quoting Dynamic Values
+
+Parameterize dynamic values is the best solution for preventing SQL injection in most cases, however, this might leads to inefficient query since the database is liable to choose the wrong optimization plan, for example when a column values are not evenly distributed, say 90% of values are 1 and the other 10% are 0, using the index to query value 0 would be much more efficient whereas it is not the case for querying value 1 because a full table scan in this situation is faster. 
