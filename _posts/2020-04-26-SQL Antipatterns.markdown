@@ -167,3 +167,12 @@ This design is helpful when you have to support new columns frequently. But fetc
 * Recommended to put a `non-null` constraint, and maybe set default values in case the column is omitted when inserting, but for sure, should be a logic value.
 
 * Dynamic default: `COALESCE()` is a good function for this, since it returns the first non-null variable from a list of passed in variables.
+
+## Implicit Columns
+
+Specify columns explicitly for example in SELECT and INSERT queries to avoid issues as follows:
+
+* Query is independent on column positions in the table, for example in INSERT query.
+* New added columns won't affect our existing queries.
+* If column got dropped, the query raises an error explicitly display which codes need to be fixed.
+
